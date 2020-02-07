@@ -5,7 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RecetaFiltroPipe implements PipeTransform {
 
-  transform(datos: any, gluten: boolean, busquedaNombre: string): any {
+  /**
+   * 
+   * @param datos 
+   * @param gluten 
+   * @param busqueda 
+   */
+  transform(datos: any, gluten: boolean, busqueda: string): any {
     // console.debug('RecetaFiltroPipe datos %o', datos);
     // console.debug('RecetaFiltroPipe gluten %s', gluten);
     // console.debug('RecetaFiltroPipe nombre %s', nombre);
@@ -18,18 +24,19 @@ export class RecetaFiltroPipe implements PipeTransform {
       resultado = resultado.filter((el) => el.isGlutenFree == gluten);
     }
 
-    // filtrar por nombre
-    if ( busquedaNombre && '' !== busquedaNombre.trim() ) {
+    // filtrar por nombre / cocinero / ingredientes
+    if(busqueda && ''!==busqueda.trim()){
+      
+      busqueda = busqueda.toLowerCase();
+      
+      resultado = resultado.filter((el)=>{
 
-      busquedaNombre = busquedaNombre.toUpperCase();
-      resultado = resultado.filter( (el) => {
-        console.debug(el);
-        const nombre = el.nombre.toUpperCase();
-        return nombre.includes(busquedaNombre);
+        const ingredientes = el.ingredientes.reduce( (c, p) => c + p , '');
+        const encontrar = (el.nombre + el.cocinero + ingredientes ).toLowerCase();
+        return encontrar.includes(busqueda);
+
       });
     }
-
-    // filtrar por cocinero
     
 
     return resultado;

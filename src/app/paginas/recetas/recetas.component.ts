@@ -11,12 +11,17 @@ export class RecetasComponent implements OnInit {
   recetas: Array<any>;
   recetaSeleccionada: Array<any>;
   nombre: string;
+  gluten:boolean;
+  busquedaNombre:string;
 
   constructor() {
     console.trace('RecetasComponent Constructor');
     this.recetas = RECETAS;
     this.recetaSeleccionada = [];
     this.nombre="";
+
+    this.gluten = false;
+    this.busquedaNombre = '';
 
   }//Constructor
 
