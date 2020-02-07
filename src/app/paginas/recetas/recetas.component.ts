@@ -9,19 +9,19 @@ import { RECETAS } from '../../const/recetas';
 export class RecetasComponent implements OnInit {
 
   recetas: Array<any>;
-  recetaSeleccionada: Array<any>;
+  recetaSeleccionada: any;
   nombre: string;
   gluten:boolean;
-  busquedaNombre:string;
+  busqueda:string;
 
   constructor() {
     console.trace('RecetasComponent Constructor');
     this.recetas = RECETAS;
-    this.recetaSeleccionada = [];
+    this.recetaSeleccionada = {};
     this.nombre="";
 
     this.gluten = false;
-    this.busquedaNombre = '';
+    this.busqueda = '';
 
   }//Constructor
 

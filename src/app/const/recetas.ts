@@ -1,4 +1,4 @@
-export const RECETAS =  [
+export const RECETAS : Array<any>=  [
     {
       "id": 1,
       "nombre": "Marmitako",
