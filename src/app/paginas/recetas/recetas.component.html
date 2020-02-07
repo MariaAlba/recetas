@@ -44,7 +44,7 @@
         </div> <!--listado-->
 
         <div class="col-lg-8">
-            <div class="row border" *ngIf="recetaSeleccionada">
+            <div class="row border" *ngIf="recetaSeleccionada.nombre">
 
                 <h4 class="bg-warning text-light pl-2 w-100">{{recetaSeleccionada.nombre}}</h4>
 
@@ -88,10 +88,10 @@
                 </div>
             </div>
 
-            <div class="row card" *ngIf="!recetaSeleccionada">
+            <div class="row card" *ngIf="!recetaSeleccionada.nombre">
                 <h4 class="card-title text-center">Recetas</h4>
                 <div class="card-body" >                   
-                    <img src="../../../../docs/assets/images/maxresdefault.jpg" class="img-fluid" alt="">
+                    <img src="/docs/assets/images/maxresdefault.jpg" class="img-fluid" alt="">
                 </div> 
             </div>
         </div><!--detalle-->
